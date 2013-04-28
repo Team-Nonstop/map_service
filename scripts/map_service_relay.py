@@ -4,7 +4,7 @@ import rospy
 import json
 
 from nav_msgs.msg import OccupancyGrid 
-from nav_msgs.srv import GetMap
+from nav_msgs.srv import GetMap,GetMapResponse,GetMapRequest
 from concert_msgs.msg import *
 
 class SubSrv(object):
@@ -18,7 +18,7 @@ class SubSrv(object):
         self.map = OccupancyGrid()
 
     def process_srv(self,srv):
-        return GetMapResponse(self.msg)
+        return GetMapResponse(self.map)
 
 
     def process_map_sub(self,msg):
