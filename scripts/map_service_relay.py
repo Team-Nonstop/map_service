@@ -52,9 +52,12 @@ class MapRelayService(object):
         self.start_services(edges)
 
     def start_services(self,edges):
+        try:
         
-        for e in edges:
-            self.subscriber[e[0]] = SubSrv(e[0],e[1],e[2])
+            for e in edges:
+                self.subscriber[e[0]] = SubSrv(e[0],e[1],e[2])
+        except Exception as e:
+            pass
             
     def get_map_pub_edges(self,msg):
         map_topics = [ t.id for t in msg.link_graph.topics if t.type == self.map_type]
